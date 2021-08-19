@@ -7,6 +7,9 @@
         "type": "git",
         "url": "https://github.com/f4lconwings/altv"
     },
+    "scripts": {
+        "update": "cd shell && bash ./altv-update-win.sh release"
+    },
     "devDependencies": {
         "@altv/types-client": "^1.7.6",
         "@altv/types-natives": "^1.4.2",

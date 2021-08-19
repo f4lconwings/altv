@@ -22,4 +22,4 @@ curl --remote-name-all https://cdn.altv.mp/server/$1/x64_win32/data/{vehmodels,v
     echo "vehicle binaries loaded"
 cd ..
 
-$SHELL
+exit 0
