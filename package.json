@@ -9,6 +9,7 @@
     },
     "scripts": {
         "build": "cd shell && sh ./typescript-compile.sh",
+        "run": "cd dist && server.exe",
         "vue": "vue-cli-service serve  ./src/interface/main.ts",
         "update": "cd shell && sh ./altv-update-win.sh release"
     },
