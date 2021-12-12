@@ -12,4 +12,4 @@ echo "compiled client files"
 tsc -p src/server
 echo "compiled server files"
 
-vue-cli-service build src/interface/main.ts --dest dist/resources/game/interface
+vite build

@@ -1,15 +1,19 @@
 {
-    "compilerOptions": {
-      "removeComments": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "noImplicitReturns": true,
-      "noImplicitThis": true,
-      "noImplicitAny": true,
-      "moduleResolution": "node",
-      "resolveJsonModule": true,
-      "allowJs": false,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true
-    }
+  "compilerOptions": {
+    "removeComments": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "strict": true,
+    "noEmit": true,
+    "allowJs": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  }
 }

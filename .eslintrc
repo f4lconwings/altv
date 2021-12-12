@@ -1,20 +1,15 @@
 {
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/vue3-essential",
-        "@vue/standard",
-        "@vue/typescript/recommended"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module"
-    },
-    "rules": {
-        "@typescript-eslint/explicit-member-accessibility": ["error"],
-        "@typescript-eslint/camelcase": ["off"],
-        "indent": ["error", 4],
-        "linebreak-style": ["error", "windows"],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"]
-    }
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": ["error"],
+    "@typescript-eslint/camelcase": ["off"],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "windows"],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
+  }
 }
