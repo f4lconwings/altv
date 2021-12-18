@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
+    "strict": true,
     "removeComments": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "strict": true,
-    "noEmit": true,
     "allowJs": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true

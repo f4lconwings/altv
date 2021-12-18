@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   root: "./src/interface",
   build: {
-    outDir: "./../../dist",
+    outDir: "./../../dist/resources/main/interface",
     emptyOutDir: false,
   },
 });

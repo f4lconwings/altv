@@ -1,11 +1,16 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "target": "ESNEXT",
-        "module": "ESNEXT",
-        "outDir": "../../dist/resources/main/client"
-    },
-    "include": [
-        "./**/*.ts"
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "ESNEXT",
+    "outDir": "../../dist/resources/main/client",
+    "types": [
+      "@altv/types-client",
+      "@altv/types-shared",
+      "@altv/types-natives",
+      "@altv/types-webview"
+    ],
+    "noEmit": false
+  },
+  "include": ["./**/*.ts", "../../types/client"]
 }
