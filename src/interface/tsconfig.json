@@ -6,8 +6,9 @@
     "module": "esnext",
     "esModuleInterop": true,
     "outDir": "../../dist/resources/main/interface",
+    "types": ["@altv/types-webview", "@altv/types-shared"],
     "jsx": "react-jsx"
   },
 
-  "include": ["./**/*.ts", "./**/*.tsx"]
+  "include": ["./**/*.ts", "./**/*.tsx", "../../types/interface"]
 }

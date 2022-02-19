@@ -6,3 +6,5 @@ bin/modules/
 bin/server.exe
 
 package-lock.json
+
+src/server/.env

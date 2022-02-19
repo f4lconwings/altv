@@ -1,7 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
 
-// import { isVerboseMode } from "../config";
 import { getTime, getDate } from "./misc";
 
 export enum Color {
@@ -22,6 +21,12 @@ export function colorize(message: string, color: Color) {
 /** Logs to `stdout` with a current timestamp */
 export function print(message: string) {
   console.log(`[${getTime()}] ${message}`);
+}
+
+/** Logs to `stdout` if verbose mode is set in .env */
+export function verbose(message: string) {
+  if (!process.env["ENABLE_VERBOSE"]) return;
+  print(`[${colorize("V", Color.cyan)}] ${message}`);
 }
 
 /** Logs to `stdout` in red color */

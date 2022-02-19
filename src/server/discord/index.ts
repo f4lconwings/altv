@@ -1,7 +1,6 @@
 import { Client as DiscordClient, Intents } from "discord.js";
 import type * as Discord from "discord.js";
 
-import { dcToken, dcGuild, dcWRole } from "../config";
 import { print, alert } from "../lib/cli";
 
 const BotIntents = new Intents();
@@ -16,30 +15,56 @@ const Cache = {
   guild: undefined as undefined | Discord.Guild,
   wRole: undefined as undefined | Discord.Role,
 };
+const Config = {
+  botTokenSecret: process.env["BOT_SECRET"],
+  serverId: process.env["SERVER_ID"],
+  roleWhitelistId: process.env["ROLE_WHITELIST_ID"],
+};
 
 Bot.on("error", onError);
 Bot.on("rateLimit", onRateLimit);
 Bot.on("guildMemberUpdate", onMemberUpdate);
 
-Bot.login(dcToken);
+export const connectDiscordBot = () =>
+  new Promise((resolve, reject) => {
+    if (!isWhitelistOn()) return resolve(false);
 
-export const connectDiscordBot = new Promise((resolve, reject) => {
-  Bot.on("ready", () => {
-    Cache.guild = Bot.guilds.cache.get(dcGuild);
-    Cache.wRole = Cache.guild?.roles.cache.get(dcWRole);
-
-    if (Cache.guild && Cache.wRole) {
-      print("Discord Bot connected successfully");
-      return resolve(true);
+    if (!isSet(Config.botTokenSecret)) {
+      alert("Bot ID is not set in configuration");
+      return reject();
     }
 
-    Cache.guild || alert("Guild could not be found");
-    Cache.wRole || alert("Whitelist role could not be found");
+    Bot.login(Config.botTokenSecret);
 
-    reject();
+    Bot.on("ready", () => {
+      if (!isSet(Config.serverId) || !isSet(Config.roleWhitelistId)) {
+        alert("Configuration is missing");
+        return reject();
+      }
+
+      Cache.guild = Bot.guilds.cache.get(Config.serverId);
+      Cache.wRole = Cache.guild?.roles.cache.get(Config.roleWhitelistId);
+
+      if (Cache.guild && Cache.wRole) {
+        print("Discord Bot connected successfully");
+        return resolve(true);
+      }
+
+      Cache.guild || alert("Guild could not be found");
+      Cache.wRole || alert("Whitelist role could not be found");
+
+      reject();
+    });
   });
-});
 
 function onError() {}
 function onRateLimit() {}
 function onMemberUpdate() {}
+
+export function isWhitelistOn() {
+  return !(!process.env["ENABLE_WHITELIST"] || process.env["ENABLE_WHITELIST"] === "false");
+}
+
+function isSet(parameter: string | undefined): parameter is string {
+  return typeof parameter === "string";
+}

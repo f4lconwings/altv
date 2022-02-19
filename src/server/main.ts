@@ -1,4 +1,5 @@
 import { colorize, Color, print, trace, alert } from "./lib/cli";
+import { checkEnv } from "./lib/env";
 import { connectToDatabase } from "./database";
 import { connectDiscordBot } from "./discord";
 
@@ -13,7 +14,7 @@ process.on("uncaughtException", onUncaughtException);
 process.on("unhandledRejection", onUnhandledRejection);
 
 // Startup
-const initDeps = [connectToDatabase, connectDiscordBot];
+const initDeps = [checkEnv(), connectToDatabase(), connectDiscordBot()];
 Promise.all(initDeps).then(onReady).catch(onBootError).then(main);
 
 // Event callbacks below
@@ -30,7 +31,7 @@ function onBootError(error: Error) {
   return;
 }
 
-/** Shutdown handler */
+// Shutdown handler
 function onBeforeExit() {}
 
 function onExit(code: number) {

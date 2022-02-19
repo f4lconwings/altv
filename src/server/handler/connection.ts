@@ -1,8 +1,11 @@
 import * as alt from "alt-server";
 import type { Player } from "alt-server";
+import { verbose } from "../lib/cli";
 
 alt.on("playerConnect", onPlayerConnect);
 alt.on("playerDisconnect", onPlayerDisconnect);
+
+verbose("Connection handler started");
 
 function onPlayerConnect(player: Player) {
   if (!player.valid) return;

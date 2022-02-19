@@ -1,9 +1,13 @@
 import { MongoClient } from "mongodb";
-import { dbUrl } from "../config";
-import { print } from "../lib/cli";
+import { print, alert } from "../lib/cli";
 
-export const connectToDatabase = MongoClient.connect(dbUrl).then((client) => {
-  global.dbClient = client;
-  global.db = client.db("dev");
+export async function connectToDatabase() {
+  if (!process.env["DB"]) throw alert("Database not found in .env");
+  const Client = await MongoClient.connect(process.env["DB"]);
+
+  global.dbClient = Client;
+  global.db = Client.db("dev");
   print("Database connection established");
-});
+
+  return true;
+}
