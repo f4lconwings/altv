@@ -42,7 +42,7 @@ function generateEnv() {
 
 function isValidEnv(env: NodeJS.ProcessEnv): env is ValidEnv {
   for (const envKey of ValidEnvKeys) {
-    if (!process.env[envKey] || process.env) {
+    if (!env[envKey]) {
       print(colorize(`${envKey} does not have a (valid string) value in the .env`, Color.yellow));
       return false;
     }
