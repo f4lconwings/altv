@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import ServerIcon from "../components/ServerIcon";
 
-type DisplayText = { top: string; bottom?: string };
+type LoaderDisplayText = { top: string; bottom?: string };
 type LoaderState = {
   progress: number;
-  text: DisplayText;
+  text: LoaderDisplayText;
 };
 
 export default function Loader() {

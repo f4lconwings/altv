@@ -12,5 +12,5 @@
     ],
     "noEmit": false
   },
-  "include": ["./**/*.ts", "../../types/client"]
+  "include": ["./**/*.ts", "../../types/client", "../../types/shared"]
 }

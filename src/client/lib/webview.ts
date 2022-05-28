@@ -1,7 +1,9 @@
-import { WebView } from "alt-client";
+import { WebView, log } from "alt-client";
 
-const Browser = new WebView("http://resource/interface/index.html");
+export let Browser = new WebView("http://resource/interface/index.html");
 
-Browser.focus();
-
-export default Browser;
+export function startBrowser() {
+  log("Starting WebView");
+  Browser = new WebView("http://resource/interface/index.html");
+  Browser.focus();
+}

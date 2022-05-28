@@ -33,18 +33,18 @@ export function checkEnv() {
 }
 
 function generateEnv() {
-  envFileVariables.forEach((variable) => {
-    fs.appendFileSync(".env", `\n${variable}=`);
-  });
+  for (const envVariable of envFileVariables) {
+    fs.appendFileSync(".env", `\n${envVariable}=`);
+  }
 }
 
 function isEnvValid() {
   let faultyVariables = 0;
-  envFileVariables.forEach((variable) => {
-    if (!process.env[variable]) {
-      print(colorize(`${variable} does not have a value in the .env`, Color.yellow));
+  for (const envVariable of envFileVariables) {
+    if (!process.env[envVariable]) {
+      print(colorize(`${envVariable} does not have a value in the .env`, Color.yellow));
       faultyVariables++;
     }
-  });
+  }
   return faultyVariables === 0;
 }

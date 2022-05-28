@@ -16,8 +16,8 @@ const Cache = {
   wRole: undefined as undefined | Discord.Role,
 };
 const Config = {
-  botTokenSecret: process.env["BOT_SECRET"],
   serverId: process.env["SERVER_ID"],
+  botTokenSecret: process.env["BOT_SECRET"],
   roleWhitelistId: process.env["ROLE_WHITELIST_ID"],
 };
 

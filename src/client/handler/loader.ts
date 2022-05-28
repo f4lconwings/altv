@@ -1,68 +1,66 @@
-/* import * as alt from "alt-client";
+import * as alt from "alt-client";
+import { setGameControls } from "../lib/controls";
+import { Browser } from "../lib/webview";
 
-import { Browser, Controls } from "../lib";
+const Workflow = [
+  { method: disableGameControls, text: { top: "Disabling game controls" } },
+  { method: setLoaderPage, text: { top: "Initializing user interface" } },
+  { method: getUserPreferences, text: { top: "Loading user preferences" } },
+  { method: getServerReadiness, text: { top: "Waiting for server response" } },
+];
 
-type DisplayText = { top: string; bottom?: string };
-type LoaderState = {
-  progress: number;
-  text: DisplayText;
-};
+export async function initLoader() {
+  for (const [index, step] of Workflow.entries()) {
+    displayState({
+      progress: (index + 1 / Workflow.length) * 100,
+      text: step.text,
+    });
 
-const Workflow = [disableGameControls, setLoaderPage; getUserPreferences, getServerReadiness];
+    alt.log(step.text.top);
 
-export default function Init() {
-  return Promise.all(Workflow);
+    await step.method();
+  }
 }
 
-function displayState(state: LoaderState) {
-  Browser.emit;
+function displayState(state: any) {
+  Browser.emit("loader:payload", state);
 }
 
 async function disableGameControls() {
-  Controls.setGameControls(false);
+  setGameControls(false);
 
   return true;
 }
 
-function setLoaderPage() {
-  Browser.emit("app:req:loader");
-  return new Promise((resolve, reject) => {
+function setLoaderPage(): Promise<boolean> {
+  return new Promise((resolve) => {
+    function handleResponse() {
+      Browser.off("app:res:loader", handleResponse);
+      resolve(true);
+    }
     Browser.on("app:res:loader", handleResponse);
 
-    function handleResponse(err?: Error) {
-      if (err) return reject(err);
-
-      Browser.off("app:res:loader", handleResponse);
-
-      return resolve(true);
-    }
+    Browser.emit("app:req:loader");
   });
 }
 
-function getUserPreferences() {}
-
-// App readiness handling
-Browser.on("app:loader:e:ready", onAppReady);
-function onAppReady() {
-  Browser.off("app:loader:e:ready", onAppReady);
+async function getUserPreferences() {
+  return true;
 }
 
-// Request handling
-Browser.on("app:loader:q:serverReadiness", onGetServerReadiness);
-function onGetServerReadiness() {
-  Browser.off("app:loader:q:serverReadiness", onGetServerReadiness);
+function getServerReadiness() {
+  return new Promise((resolve) => {
+    function response() {
+      alt.offServer("cli:res:readiness", response);
+      alt.clearInterval(interval);
+      resolve(true);
+    }
+    function emit() {
+      alt.emitServer("cli:req:readiness");
+    }
 
-  let interval = alt.setInterval(() => {
-    if (true) return alt.clearInterval(interval);
-    alt.emitServer("srv:loader:q:serverReadiness");
-  }, 5e3);
+    alt.onServer("cli:res:readiness", response);
+    const interval = alt.setInterval(emit, 5e3);
+    emit();
+  });
 }
-
-// Response handling
-alt.onServer("srv:loader:r:serverReadiness", onSetServerReadiness);
-function onSetServerReadiness() {
-  alt.offServer("srv:loader:r:serverReadiness", onSetServerReadiness);
-
-  Browser.emit("app:loader:r:serverReadiness");
-}
- */
