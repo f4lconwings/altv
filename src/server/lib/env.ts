@@ -4,7 +4,7 @@ import { alert, print, colorize, Color } from "./cli";
 
 dotenv.config();
 
-const envFileVariables = [
+const ValidEnvKeys = [
   "BOT_SECRET",
   "CLIENT_ID",
   "CLIENT_SECRET",
@@ -13,7 +13,9 @@ const envFileVariables = [
   "ROLE_WHITELIST_ID",
   "ENABLE_WHITELIST",
   "ENABLE_VERBOSE",
-];
+] as const;
+
+export type ValidEnv = { [key in typeof ValidEnvKeys[number]]: string };
 
 export function checkEnv() {
   return new Promise((resolve) => {
@@ -23,7 +25,7 @@ export function checkEnv() {
       process.exit(601); // Error 601
     }
 
-    if (!isEnvValid) {
+    if (!isValidEnv(process.env)) {
       alert("Some .env variables do not have a value");
       process.exit(602); // Error 602
     }
@@ -33,18 +35,17 @@ export function checkEnv() {
 }
 
 function generateEnv() {
-  for (const envVariable of envFileVariables) {
-    fs.appendFileSync(".env", `\n${envVariable}=`);
+  for (const envKey of ValidEnvKeys) {
+    fs.appendFileSync(".env", `\n${envKey}=`);
   }
 }
 
-function isEnvValid() {
-  let faultyVariables = 0;
-  for (const envVariable of envFileVariables) {
-    if (!process.env[envVariable]) {
-      print(colorize(`${envVariable} does not have a value in the .env`, Color.yellow));
-      faultyVariables++;
+function isValidEnv(env: NodeJS.ProcessEnv): env is ValidEnv {
+  for (const envKey of ValidEnvKeys) {
+    if (!process.env[envKey] || process.env) {
+      print(colorize(`${envKey} does not have a (valid string) value in the .env`, Color.yellow));
+      return false;
     }
   }
-  return faultyVariables === 0;
+  return true;
 }

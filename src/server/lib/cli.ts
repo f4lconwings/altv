@@ -25,7 +25,7 @@ export function print(message: string) {
 
 /** Logs to `stdout` if verbose mode is set in .env */
 export function verbose(message: string) {
-  if (!process.env["ENABLE_VERBOSE"]) return;
+  if (!process.env.ENABLE_VERBOSE) return;
   print(`[${colorize("V", Color.cyan)}] ${message}`);
 }
 

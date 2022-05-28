@@ -3,8 +3,8 @@ import * as sjcl from "sjcl";
 
 import { verbose } from "../lib/cli";
 
-const ip = encodeURI(`http://${process.env["REDIRECT_IP"]}:7790/authenticate`);
-const authURI = `https://discord.com/api/oauth2/authorize?client_id=${process.env["CLIENT_ID"]}&redirect_uri=${ip}&prompt=none&response_type=code&scope=identify`;
+const ip = encodeURI(`http://${process.env.REDIRECT_IP}:7790/authenticate`);
+const authURI = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${ip}&prompt=none&response_type=code&scope=identify`;
 
 alt.onClient("discord:req:auth", handleAuth);
 

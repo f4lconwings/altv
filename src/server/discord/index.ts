@@ -16,9 +16,9 @@ const Cache = {
   wRole: undefined as undefined | Discord.Role,
 };
 const Config = {
-  serverId: process.env["SERVER_ID"],
-  botTokenSecret: process.env["BOT_SECRET"],
-  roleWhitelistId: process.env["ROLE_WHITELIST_ID"],
+  serverId: process.env.SERVER_ID,
+  botTokenSecret: process.env.BOT_SECRET,
+  roleWhitelistId: process.env.ROLE_WHITELIST_ID,
 };
 
 Bot.on("error", onError);
@@ -62,7 +62,7 @@ function onRateLimit() {}
 function onMemberUpdate() {}
 
 export function isWhitelistOn() {
-  return !(!process.env["ENABLE_WHITELIST"] || process.env["ENABLE_WHITELIST"] === "false");
+  return !(process.env.ENABLE_WHITELIST === "false");
 }
 
 function isSet(parameter: string | undefined): parameter is string {
