@@ -1,6 +1,6 @@
 import * as alt from "alt-client";
 import { setGameControls } from "../lib/controls";
-import { Browser, startBrowser } from "../lib/webview";
+import { Browser } from "../lib/webview";
 
 const Workflow = [
   { method: disableGameControls, text: { top: "Disabling game controls" } },
@@ -33,7 +33,6 @@ async function disableGameControls() {
 }
 
 function setLoaderPage(): Promise<boolean> {
-  startBrowser();
   return new Promise((resolve) => {
     function handleResponse() {
       Browser.off("app:res:loader", handleResponse);

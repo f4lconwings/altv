@@ -1,3 +1,3 @@
-export default function Overlay() {
+export function Overlay() {
   return <></>;
 }

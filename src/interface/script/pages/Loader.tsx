@@ -8,7 +8,7 @@ type LoaderState = {
   text: LoaderDisplayText;
 };
 
-export default function Loader() {
+export function Loader() {
   const [state, setState] = useState<LoaderState>({
     progress: 0,
     text: { top: "Initializing" },
