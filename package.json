@@ -14,10 +14,10 @@
     "update": "cd shell && sh ./altv-update-win.sh release"
   },
   "devDependencies": {
-    "@altv/types-client": "^1.9.4",
-    "@altv/types-natives": "^1.4.3",
-    "@altv/types-server": "^2.1.1",
-    "@altv/types-shared": "^1.1.0",
+    "@altv/types-client": "^2.1.8",
+    "@altv/types-natives": "^1.4.4",
+    "@altv/types-server": "^2.3.6",
+    "@altv/types-shared": "^1.2.5",
     "@altv/types-webview": "^1.0.2",
     "@types/node": "^12.20.37",
     "@types/react": "^17.0.37",
