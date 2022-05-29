@@ -18,7 +18,7 @@ curl --remote-name-all https://cdn.altv.mp/js-module/$1/x64_win32/modules/js-mod
 cd ../..
 
 mkdir -p data && cd $_
-curl --remote-name-all https://cdn.altv.mp/server/$1/x64_win32/data/{vehmodels,vehmods,clothes}.bin
+curl --remote-name-all https://cdn.altv.mp/data/$1/data/{vehmodels,vehmods,clothes}.bin
     echo "Vehicle binaries and clothes loaded"
 cd ..
 
