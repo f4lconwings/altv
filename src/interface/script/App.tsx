@@ -1,6 +1,5 @@
-import "../style/main.scss";
+import { EventInterface } from "./EventInterface";
 import { RouterComponent } from "./Router";
-import { EventInterface } from "./eventInterface";
 
 export function App() {
   return (

@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import * as fs from "fs";
-import { alert, print, colorize, Color } from "./cli";
+import { alert, Color, colorize, print } from "./cli";
 
 dotenv.config();
 

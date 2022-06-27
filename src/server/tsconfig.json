@@ -5,7 +5,10 @@
     "module": "CommonJS",
     "outDir": "../../dist/resources/main/server",
     "types": ["@altv/types-server", "@altv/types-shared"],
-    "noEmit": false
+    "noEmit": false,
+    "paths": {
+      "~/*": ["./*"]
+    }
   },
   "include": ["./**/*.ts", "../../types/server"]
 }

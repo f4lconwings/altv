@@ -1,5 +1,5 @@
 import { MongoClient } from "mongodb";
-import { print, alert } from "../lib/cli";
+import { alert, print } from "~/lib/cli";
 
 export async function connectToDatabase() {
   if (!process.env.DB) throw alert("Database not found in .env");

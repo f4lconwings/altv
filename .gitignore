@@ -1,10 +1,9 @@
-dist/
 node_modules/
+
 bin/data/
 bin/modules/
-
 bin/server.exe
 
-package-lock.json
+dist/
 
 src/server/.env
