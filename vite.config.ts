@@ -5,7 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   root: "./src/interface",
-  base: "./",
   build: {
     outDir: "./../../dist/resources/main/interface",
     emptyOutDir: false,

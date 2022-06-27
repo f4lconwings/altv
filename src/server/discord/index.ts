@@ -1,16 +1,16 @@
-import type * as Discord from "discord.js";
 import { Client as DiscordClient, Intents } from "discord.js";
+import type * as Discord from "discord.js";
 
-import { alert, print } from "~/lib/cli";
+import { print, alert } from "../lib/cli";
 
-const intents = new Intents();
-intents.add(
+const BotIntents = new Intents();
+BotIntents.add(
   Intents.FLAGS.GUILD_PRESENCES,
   Intents.FLAGS.GUILD_MEMBERS,
   Intents.FLAGS.DIRECT_MESSAGES,
 );
 
-const Bot = new DiscordClient({ intents });
+const Bot = new DiscordClient();
 const Cache = {
   guild: undefined as undefined | Discord.Guild,
   wRole: undefined as undefined | Discord.Role,

@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { getDate, getTime } from "./time";
+import { getTime, getDate } from "./misc";
 
 export enum Color {
   red = "\x1b[31m",

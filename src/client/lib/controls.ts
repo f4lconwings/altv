@@ -1,7 +1,7 @@
-import { Player, showCursor, toggleGameControls } from "alt-client";
+import { toggleGameControls, showCursor, Player } from "alt-client";
 import { freezeEntityPosition } from "natives";
 
-/** Player is able to move */
+/** Is able to move */
 var isMove = false;
 /**
  * Provides an interface to altv's `toggleGameControls`
@@ -12,7 +12,7 @@ export function setMovement(isActive: boolean) {
   toggleGameControls((isMove = isActive));
 }
 
-/** Player is frozen in place */
+/** Is frozen in place */
 var isFreeze = false;
 /**
  * Provides an interface to the gta native `freezeEntityPosition`
@@ -23,7 +23,7 @@ export function setFreeze(isActive: boolean) {
   freezeEntityPosition(Player.local.scriptID, (isFreeze = isActive));
 }
 
-/** Player cursor is visible */
+/** Is cursor visible */
 var isCursor = false;
 /**
  * Provides an interface to cursor visibility
