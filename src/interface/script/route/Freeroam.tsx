@@ -1,3 +1,3 @@
 export function Freeroam() {
-  return <></>;
+  return <div></div>;
 }
