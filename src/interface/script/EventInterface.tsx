@@ -3,5 +3,5 @@ import { useEffect } from "react";
 export function EventInterface() {
   useEffect(() => {});
 
-  return <></>;
+  return <>I am the Event Interface</>;
 }

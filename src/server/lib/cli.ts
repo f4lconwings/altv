@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { environment } from "./env";
 
 import { getDate, getTime } from "./time";
 
@@ -25,7 +26,7 @@ export function print(message: string) {
 
 /** Logs to `stdout` if verbose mode is set in .env */
 export function verbose(message: string) {
-  if (!process.env.ENABLE_VERBOSE) return;
+  if (!environment.ENABLE_VERBOSE) return;
   print(`[${colorize("V", Color.cyan)}] ${message}`);
 }
 
