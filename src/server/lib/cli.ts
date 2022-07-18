@@ -35,6 +35,13 @@ export function alert(message: string) {
   print(colorize(message, Color.red));
 }
 
+export class Notice extends Error {
+  constructor(message: string) {
+    super(message);
+    alert(message);
+  }
+}
+
 /** Logs an error onto a logging file */
 export async function trace(error: Error = new Error()) {
   await fs.promises

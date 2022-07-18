@@ -2,9 +2,10 @@ import * as alt from "alt-server";
 import * as sjcl from "sjcl";
 
 import { verbose } from "~/lib/cli";
+import { environment } from "~/lib/env";
 
-const ip = encodeURI(`http://${process.env.REDIRECT_IP}:7790/authenticate`);
-const authURI = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${ip}&prompt=none&response_type=code&scope=identify`;
+const redirectURI = encodeURI(environment.REDIRECT_URI);
+const authURI = `https://discord.com/api/oauth2/authorize?client_id=${process.env.CLIENT_ID}&redirect_uri=${redirectURI}&prompt=none&response_type=code&scope=identify`;
 
 alt.onClient("discord:req:auth", handleAuth);
 
