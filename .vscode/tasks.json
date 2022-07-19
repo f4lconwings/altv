@@ -2,15 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "typescript",
-      "tsconfig": "tsconfig.json",
-      "problemMatcher": ["$tsc"],
+      "label": "watch",
+      "type": "shell",
+      "command": "npm run watch",
       "runOptions": {
         "runOn": "folderOpen"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
       }
     }
   ]

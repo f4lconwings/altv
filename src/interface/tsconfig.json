@@ -1,12 +1,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
+    "noEmit": false,
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "esModuleInterop": true,
     "outDir": "../../dist/resources/main/interface",
-    "types": ["@altv/types-webview", "@altv/types-shared"],
     "jsx": "react-jsx"
   },
 

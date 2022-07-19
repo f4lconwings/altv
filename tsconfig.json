@@ -1,5 +1,12 @@
 {
+  "exclude": ["./node_modules/@vitejs/**/*", "./vite.config.ts"],
+  "references": [
+    { "path": "./src/interface" },
+    { "path": "./src/client" },
+    { "path": "./src/server" }
+  ],
   "compilerOptions": {
+    "typeRoots": ["./node_modules/@types", "./node_modules/@altv"],
     "strict": true,
     "removeComments": true,
     "noUnusedLocals": true,

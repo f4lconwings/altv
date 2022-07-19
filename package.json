@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "cd shell && sh ./typescript-compile.sh",
-    "run": "cd dist && server.exe",
+    "start": "cd dist && server.exe",
+    "watch": "tsc --watch --noEmit --jsx react-jsx",
     "react": "vite",
     "update": "cd shell && sh ./altv-update-win.sh release"
   },
